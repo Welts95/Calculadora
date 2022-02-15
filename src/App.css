@@ -2,37 +2,84 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Container {
+  border: 2px solid black;
+  padding: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 470px;
+  background-color: rgb(147, 160, 185);
+  border-radius: 15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Input {
+  text-align: right;
+  padding-right: 15px;
+  padding-top: 15px;
+  height: 75px;
+  background-color: rgb(39, 39, 39);
+  border-radius: 8px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.Input label {
+  font-size: 50px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.Input,
+.ClearInput {
+  font-size: 25px;
+  border: 2px solid black;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.ClearInput {
+  width: 100%;
+  padding: 4%;
+  border-radius: 8px;
+  background-color: rgb(53, 85, 156);
+  color: white;
+  font-style: bold;
+  font-size: 30px;
+}
+
+.Botonera {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  width: 100%;
+  column-gap: 10px;
+  row-gap: 10px;
+  align-items: flex-start;
+  justify-content: right;
+}
+
+.Boton {
+  width: 150px;
+  height: 75px;
+  font-size: 40px;
+  border-radius: 7px;
+  background-color: rgb(215, 215, 235);
+}
+
+h2 {
+  margin: 0;
+  color: white;
+  text-align: left;
+  font-size: 30px;
+  padding: 10px 10px 5px 30px;
+}
+
+.Operadors {
+  display: flex;
+  margin-top: 10px;
+  column-gap: 10px;
+}
+
+.Operadors .Boton {
+  width: 50%;
+  color: white;
+  font-size: 60px;
+  background-color: rgb(55, 56, 61);
 }
