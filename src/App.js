@@ -1,43 +1,39 @@
 import "./App.css";
 import Botones from "./Botones";
 import React, { useState } from "react";
-import Input from "./Input";
+import Display from "./Display";
+
+const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
 export default function App() {
-  let [numbers, setNumbers] = useState("0");
-  let [operacio, setOperacio] = useState("");
-  let resultat = "";
+  const [antic, setAntic] = useState(0);
+  const [operacio, setOperacio] = useState("");
+  const [display, setDisplay] = useState(0);
+  const [novaEntrada, setNovaEntrada] = useState(false);
+  const [historial, setHistorial] = useState([]);
 
-  const handleClick = (valor) => {
-    switch (valor) {
+  const calcular = () => {
+    switch (operacio) {
       case "+":
-        return (
-          (resultat = numbers.toString() + "+"),
-          setOperacio(resultat),
-          console.log(resultat),
-          setNumbers(0)
-        );
+        return setDisplay(antic + display);
       case "-":
-        return (
-          (resultat = numbers.toString() + "-"),
-          setOperacio(resultat),
-          console.log(resultat),
-          setNumbers(0)
-        );
-      case "=":
-        return (
-          console.log("operacio: " + operacio + ", " + numbers),
-          (resultat = operacio + numbers),
-          console.log(operacio + numbers),
-          setNumbers(Math.resultat)
-        );
+        return setDisplay(antic - display);
       default:
-        return (
-          (numbers = parseInt(numbers + valor)),
-          console.log(numbers),
-          setNumbers(numbers)
-        );
+        break;
     }
+  };
+
+  const entraOperacio = (operacio) => {
+    setNovaEntrada(true);
+    setAntic(display);
+    if (!novaEntrada) calcular();
+    setOperacio(operacio);
+  };
+
+  const netejaDisplay = () => {
+    setAntic(0);
+    setOperacio("");
+    setDisplay(0);
   };
 
   return (
@@ -45,31 +41,32 @@ export default function App() {
       <h1>Calculadora</h1>
       <div className="Container">
         <h2>CASIO</h2>
-        <div className="Input">
-          <Input numbers={numbers} />
+        <div className="Display">
+          <label className="Historic">text</label>
+          <br />
+          <Display antic={antic} operacio={operacio} display={display} />
         </div>
         <div className="Botonera">
-          <Botones value={"7"} clicar={handleClick} />
-          <Botones value={"8"} clicar={handleClick} />
-          <Botones value={"9"} clicar={handleClick} />
-          <Botones value={"4"} clicar={handleClick} />
-          <Botones value={"5"} clicar={handleClick} />
-          <Botones value={"6"} clicar={handleClick} />
-          <Botones value={"1"} clicar={handleClick} />
-          <Botones value={"2"} clicar={handleClick} />
-          <Botones value={"3"} clicar={handleClick} />
-          <Botones value={"0"} clicar={handleClick} />
-          <Botones value={"="} clicar={handleClick} />
+          <Botones
+            numeros={numeros}
+            novaEntrada={novaEntrada}
+            setNovaEntrada={setNovaEntrada}
+            display={display}
+            clicar={setDisplay}
+          />
         </div>
         <div className="Operadors">
-          <Botones value={"+"} clicar={handleClick} />
-          <Botones value={"-"} clicar={handleClick} />
+          <button className="Boton" onClick={() => entraOperacio("+")}>
+            +
+          </button>
+          <button className="Boton" onClick={() => entraOperacio("-")}>
+            -
+          </button>
+          <button className="Boton" onClick={calcular}>
+            =
+          </button>
         </div>
-        <button
-          onClick={() => setNumbers(0)}
-          className="ClearInput"
-          type="button"
-        >
+        <button onClick={netejaDisplay} className="ClearInput" type="button">
           CLEAR
         </button>
       </div>
